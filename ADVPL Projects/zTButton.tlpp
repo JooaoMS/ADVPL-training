@@ -1,0 +1,39 @@
+//Bibliotecas necessárias
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+/*/{Protheus.doc} zTButton
+Criação de botões com redirecionamento
+@type function
+@version  1.0
+@author jvsilva
+@since 4/2/2024
+@see https://tdn.totvs.com/display/tec/Construtor+TButton%3ANew, https://tdn.totvs.com/display/tec/Construtor+TDialog%3ANew
+/*/
+
+User Function zTButton()
+Local oDlg1 //Variavel que receberá a chamada da classe TDialog
+Local cTituloJanela := "Utilitarios no Protheus" //Variavel para mostrar a mensagem na aba de tela do TDialog
+Local oButton1 //Variavel que armazenará a classe do primeiro botão (Se tornando um objeto)
+Local oButton2 //Variavel que armazenará a classe do segundo botão
+Local oButton3 // Variavel que armazenará a classe do terceiro botão 
+Local oButton4 //Variavel que armazenará a classe do quarto botão
+Local oButton5 //Variavel que armazenará a classe do quinto botão
+
+oDlg1 := TDialog():New(180,180,550,700,cTituloJanela,,,,,CLR_BLACK, CLR_WHITE,,,.T.) //Indica onde a janela vai aparecer na tela / nome da janela
+
+/* PARAMETROS DOS BOTÕES
+1º Parametro - Coordenada vertical
+2º Parametro - Coordenada horizontal
+3º Título do botão
+4º Elemento onde ele sera fixado (janela oDlg1)
+5º Ação executada ao clicar no botão */
+oButton1 := TButton():New(20,50,  "Clientes",    oDlg1,{|| Mata030()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama tela de clientes
+oButton2 := TButton():New(40,50,  "Fornecedores",oDlg1,{|| Mata020()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama tela de fornecedores
+oButton3 := TButton():New(60,50,  "Bancos",      oDlg1,{|| Mata070()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama a tela dos bancos
+oButton4 := TButton():New(80,50,  "Produtos",    oDlg1,{|| Mata010()}, 40,20,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama a tela de produtos
+oButton5 := TButton():New(100,100,"FECHAR",      oDlg1,{|| oDlg1:end()}, 40,20,,,.F.,.T.,.F.,,.F.,,,.F.) //Aciona o fechamento da janela oDlg1
+
+oDlg1:Activate(,,,) //É o metodo que vai chamar a classe e ativar a janela
+
+return

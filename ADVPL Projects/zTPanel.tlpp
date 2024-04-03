@@ -1,0 +1,16 @@
+//Bibliotecas necessárias
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+User Function zTPanel()
+
+Local oDlg1
+Local oPanel
+
+oDlg   := TDialog():New(0,0,300,300,'Teste TPanel',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+oPanel := tPanel():New(10,10,"Teste",oDlg1,,.T.,,CLR_YELLOW,CLR_BLUE,100,100)
+
+oDlg1:Activate(,,,.T.)
+
+return

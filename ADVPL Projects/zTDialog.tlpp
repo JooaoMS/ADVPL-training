@@ -1,0 +1,21 @@
+//Bibliotecas necessárias 
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+/*/{Protheus.doc} zTDialog
+Criação de uma janela em ADVPL
+@type function
+@version 1.0
+@author jvsilva
+@since 4/2/2024
+@see https://tdn.totvs.com/display/tec/Construtor+TDialog%3ANew
+/*/
+
+User Function zTDialog() //Necessário adicionar o zTDialog pelo menu do configurador (SIGACFG)
+
+Local oDlg1 //Variavel que receberá a chamada da classe TDialog.
+
+oDlg1 := TDialog():New(180,180,550,700,'Cadastro',,,,,CLR_BLACK, CLR_WHITE,,,.T.) //Indica onde a janela vai aparecer na tela em px / nome da janela.
+oDlg1:Activate(,,,) //Método que vai chamar a classe e ativar a janela.
+
+return

@@ -1,0 +1,36 @@
+//Bibliotecas necessárias
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+/*/{Protheus.doc} zTGet
+Criação de um fonte que captura o texto digitado, e é retornado como mensagem em uma tela por uma variavel.
+@type function
+@version  1.0
+@author jvsilva
+@since 4/2/2024
+@see https://tdn.totvs.com/display/tec/Construtor+TGet%3ANew, https://efacildemais.blogspot.com/2011/06/msadvsize-dimensionamento-de-janelas-no.html, https://tdn.totvs.com/display/tec/TFont%3ANew, https://tdn.totvs.com/display/tec/Construtor+TSay%3ANew, https://tdn.totvs.com/display/tec/Construtor+TButton%3ANew, https://tdn.totvs.com/display/tec/Construtor+TDialog%3ANew
+/*/
+
+User Function zTGet()
+Local oDlg1
+Local aSize := MsAdvSize() //função interna que retorna um array com as coordenadas/dimensões de tela
+Local oSay1
+Local oButton1
+
+/*
+COMEÇAMOS O CÓDIGO AQUI
+space(15) = permite 15 caracteres  
+*/
+
+Local cGet1 := Space(15) //Variavel que irá capturar o que for digitado, para cada tget é  necessário uma variavel caracter para armazenar o que foi digitado
+Local oGet1             //Variavel responsável por receber a classe tget
+
+oDlg1 := TDialog():New(aSize[7],aSize[1],aSize[6],aSize[5], "Aprendendo a usar o TGet",,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+oSay1 := TSay():New(10,10,{||'Digite o seu nome:'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+oGet1 := TGet():New(30,10,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oDlg1,60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,,)
+
+oButton1 := TButton():New(50,10,"Mostrar nome",oDlg1,{|| MsgInfo(cGet1, "Conteudo digitado:")}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F.) //
+
+oDlg1:Activate(,,,.T.) //Metodo que vai chamar a classe e ativar a janela
+
+return      

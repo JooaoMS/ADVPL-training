@@ -1,0 +1,46 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+/*/{Protheus.doc} zTSay
+Criação de uma TSay (mensagem )
+@type function
+@version 1.0 
+@author jvsilva
+@since 4/2/2024
+@see https://tdn.totvs.com/display/tec/Construtor+TSay%3ANew, https://tdn.totvs.com/display/tec/Construtor+TButton%3ANew, https://tdn.totvs.com/display/tec/Construtor+TDialog%3ANew
+/*/
+
+User function zTSay()
+Local oDlg1 //Variavel que receberá a chamada da classe TDialog
+Local cTituloJanela := "ACESSOS RÁPIDOS" //Variavel para mostrar o titulo da janela do TDialog
+Local oButton1, oButton2, oButton3, oButton4, oButton5 //Variavel que armazenará a classe dos botões
+Local oSay1, oSay2, oSay3, oSay4, oSay5 //Variavel que armazenara a TSay e exibira um texto na tela
+
+oDlg1 := TDialog():New(180,180,550,700,cTituloJanela,,,,,CLR_BLACK, CLR_WHITE,,,.T.) //Indica onde a janela vai aparecer na tela / nome da janela
+
+/* PARAMETROS DOS BOTÕES
+1º Parametro - Coordenada vertical
+2º Parametro - Coordenada horizontal
+3º Título do botão
+4º Elemento onde ele sera fixado (janela oDlg1)
+5º Ação executada ao clicar no botão */
+
+oButton1 := TButton():New(20,50,"Clientes",oDlg1,{|| Mata030()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama tela de clientes
+oSay1    := TSay():New(25,90,{||'Telas utilitarias do protheus'},oDlg1,,,,,,.T.,CLR_RED, CLR_WHITE,200,20) //Indica onde a janela vai aparecer na tela / nome da janela
+
+oButton2 := TButton():New(40,50,"Fornecedores",oDlg1,{||Mata020()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama tela de fornecedores
+oSay2    := TSay():New(45,90,{||'Telas utilitarias do protheus'},oDlg1,,,,,,.T.,CLR_RED, CLR_WHITE,200,20) //Indica onde a janela vai aparecer na tela / nome da janela
+
+oButton3 := TButton():New(60,50,"Bancos",oDlg1,{|| Mata070()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama a tela dos bancos
+oSay3    := TSay():New(65,90,{||'Telas utilitarias do protheus'},oDlg1,,,,,,.T.,CLR_RED, CLR_WHITE,200,20) //Indica onde a janela vai aparecer na tela / nome da janela
+
+oButton4 := TButton():New(80,50,"Produtos",oDlg1,{|| Mata010()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F.) //Chama a tela de produtos
+oSay4    := TSay():New(85,90,{||'Telas utilitarias do protheus'},oDlg1,,,,,,.T.,CLR_RED, CLR_WHITE,200,20) //Indica onde a janela vai aparecer na tela / nome da janela
+
+oButton5 := TButton():New(100,100,"FECHAR",oDlg1,{|| oDlg1:end()}, 40,20,,,.F.,.T.,.F.,,.F.,,,.F.) //Fecha a tela
+oSay5    := TSay():New(105,140,{||'Telas utilitarias do protheus'},oDlg1,,,,,,.T.,CLR_RED, CLR_WHITE,200,20) //Indica onde a janela vai aparecer na tela / nome da janela
+
+
+oDlg1:Activate(,,,) //É o metodo que vai chamar a classe e ativar a janela
+
+return
